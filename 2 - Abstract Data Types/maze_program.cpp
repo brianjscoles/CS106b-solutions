@@ -50,8 +50,10 @@ int main() {
 	while(true){
 		pointT maze_size = getParameters();
 		cout << "Please wait while maze is generated." << endl;
-		Maze m = generateMaze(maze_size);							// this constructs the main Maze object, which will be
-																	// passed by reference to the functions that operate on it.
+
+		// this constructs the main Maze object, which will be
+		// passed by reference to the functions that operate on it.
+		Maze m = generateMaze(maze_size);							
 		m.draw();
 		cout << "Maze generated... hit ENTER to solve!";
 		GetLine();
@@ -103,15 +105,18 @@ pointT getParameters() {
 Vector<pointT> findNeighbors(Maze m, pointT position) {
 	Vector<pointT> neighbors;
 	for(int i = 0; i < 4; i++){
-		neighbors.add(position);	// populates "neighbors" with 4 copies of the current position.  
-									// it will then edit each position to generate the possible neighbor coordinates.
+		
+	// populates "neighbors" with 4 copies of the current position.  
+	// it will then edit each position to generate the possible neighbor coordinates.
+		neighbors.add(position);	
 	}
 	neighbors[0].row += 1;			// this defines the "north neighbor"
 	neighbors[1].col += 1;			// east neighbor
 	neighbors[2].row -= 1;			// south neighbor
 	neighbors[3].col -= 1;			// west neighbor
 	
-	Vector<pointT> in_bounds_neighbors;		// collects only the neighbors that are within the legal bounds of the maze
+	// collects only the neighbors that are within the legal bounds of the maze
+	Vector<pointT> in_bounds_neighbors;		
 	for(int i = 0; i < 4; i++){
 		if(m.pointInBounds(neighbors[i])) {
 			in_bounds_neighbors.add(neighbors[i]);
@@ -135,6 +140,7 @@ bool pointsEqual(pointT p1, pointT p2){
 		return false;
 	}
 }
+
 
 /*
  * FUNCTION: findNeighbors
@@ -253,5 +259,3 @@ void drawSolution(Stack<pointT> path, Maze &m){
 	}
 }
 
-
-// this comment is for testing how Git manages document revisions.
