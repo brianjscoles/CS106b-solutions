@@ -7,6 +7,10 @@
  */
 
 
+/* Problem 2: drawing subdivisions on a ruler.
+ * This function draws a ruler with smaller and smaller subdividing tickmarks.
+ */ 
+
 
 #include <iostream>
 #include "simpio.h"
@@ -33,9 +37,6 @@ int main ()
 
 
 
-/* Problem 2: drawing subdivisions on a ruler.
- * This function draws a ruler with smaller and smaller subdividing tickmarks.
- */ 
 
 // wrapper function
 void DrawRuler(double x, double y, double w, double h){
