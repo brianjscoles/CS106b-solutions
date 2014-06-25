@@ -8,6 +8,15 @@
 
 
 
+/* Problem 4: cell phone keypad word lookup.
+ * The function simulates a T9-type keypad word completion algorithm.
+ * It accepts a string of digits, generates a list of possible letter strings ("prefixes") based on
+ * the layout of a standard alphanumeric keypad (though including Q on keypad 7 and Z on keypad 9),
+ * and prints a list of valid english words that start with those prefixes.
+ * The function will ignore any characters not in the valid digit range of 2 - 9 inclusive.
+ */
+
+
 #include <iostream>
 #include "simpio.h"
 #include "lexicon.h"
@@ -35,14 +44,6 @@ int main ()
 }
 
 
-
-/* Problem 4: cell phone keypad word lookup.
- * The function simulates a T9-type keypad word completion algorithm.
- * It accepts a string of digits, generates a list of possible letter strings ("prefixes") based on
- * the layout of a standard alphanumeric keypad (though including Q on keypad 7 and Z on keypad 9),
- * and prints a list of valid english words that start with those prefixes.
- * The function will ignore any characters not in the valid digit range of 2 - 9 inclusive.
- */
 
 // wrapper function
 void ListCompletions(string digits, Lexicon & lex) {
