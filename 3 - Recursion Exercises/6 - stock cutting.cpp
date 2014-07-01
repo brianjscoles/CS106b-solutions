@@ -7,6 +7,12 @@
  */
 
 
+/* Problem 6: Pipe cutting.
+ * This function accepts a Vector of ints that represents a set of desired pipe lengths, and an
+ * int that represents the length of the stock pipes.  It returns the minimum number of stock pipes
+ * required to obtain the desired set of pipe pieces, based on how the stock pieces might be cut up.
+ */
+
 
 #include <iostream>
 #include "simpio.h"
@@ -47,13 +53,6 @@ int main ()
     return 0;
 }
 
-
-
-/* Problem 6: Pipe cutting.
- * This function accepts a Vector of ints that represents a set of desired pipe lengths, and an
- * int that represents the length of the stock pipes.  It returns the minimum number of stock pipes
- * required to obtain the desired set of pipe pieces, based on how the stock pieces might be cut up.
- */
 
 
 // wrapper and setup function.

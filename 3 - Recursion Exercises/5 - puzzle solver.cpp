@@ -7,6 +7,16 @@
  */
 
 
+/* Problem 5: Vector puzzle solver.
+ * This function accepts a Vector of ints and a start position on that vector.  It attempts to 
+ * "solve the puzzle" by moving back and forth along the vector.  The distance of each move is determined
+ * by the value of the current position in the vector.  The puzzle is solved when the last item in the 
+ * vector is reached.  Function returns True if a solution exists, or False otherwise.
+ * To prevent backtracking, the function logs which squares it has "stepped on" so far, and will never
+ * step on the same square twice for a given solution.
+ */
+
+
 
 #include <iostream>
 #include "simpio.h"
@@ -23,9 +33,11 @@ bool PuzzleSolvable(int start, Vector<int> & squares, Vector<bool> square_unused
 int main ()
 {
     
-    
 
     // Test code for problem 5: vector puzzle solver.
+    // There is surely a nicer method to populate these test Vectors but I have not found it yet.
+    // I suppose I could make an array and iteratively copy the array contents into the vector,
+    // but that's not exactly slick either.
     cout << "Now trying to solve some \"square\" vector puzzles!" << endl << endl;
     Vector<int> puzzle;
     string puzzle_digits = "3641342530";
@@ -70,18 +82,6 @@ int main ()
 
     return 0;
 }
-
-
-
-
-/* Problem 5: Vector puzzle solver.
- * This function accepts a Vector of ints and a start position on that vector.  It attempts to 
- * "solve the puzzle" by moving back and forth along the vector.  The distance of each move is determined
- * by the value of the current position in the vector.  The puzzle is solved when the last item in the 
- * vector is reached.  Function returns True if a solution exists, or False otherwise.
- * To prevent backtracking, the function logs which squares it has "stepped on" so far, and will never
- * step on the same square twice for a given solution.
- */
 
 
 //wrapper function

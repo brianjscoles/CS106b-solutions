@@ -7,6 +7,13 @@
  */
 
 
+/* Problem 3: Every vote counts (or does it?).
+ * This function examines a Vector of voting blocks, models all possible voting states (assuming the only
+ * two candidates are Alice and Bob), and prints out the number of outcomes in which the specified voting block
+ * will hold a critical or deciding vote.  Also tracks and prints out the total number of possible outcomes.
+ */
+
+
 
 #include <iostream>
 #include "simpio.h"
@@ -42,12 +49,6 @@ int main ()
 }
 
 
-
-/* Problem 3: Every vote counts (or does it?).
- * This function examines a Vector of voting blocks, models all possible voting states (assuming the only
- * two candidates are Alice and Bob), and prints out the number of outcomes in which the specified voting block
- * will hold a critical or deciding vote.  Also tracks and prints out the total number of possible outcomes.
- */
 
 //wrapper function
 int CountCriticalVotes(Vector<int> & blocks, int blockIndex){

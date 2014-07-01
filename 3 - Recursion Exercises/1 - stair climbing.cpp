@@ -6,6 +6,11 @@
  */
 
 
+/* Problem 1: stairclimbing.
+ * This function determines how many different ways there are to climb a staircase of
+ * a given length, if with each stride you can choose to advance up by one stair or two.
+ * Returns an integer.  Returns 0 if the parameter numStairs is negative.
+ */
 
 #include <iostream>
 #include "simpio.h"
@@ -34,11 +39,6 @@ int main ()
     
 
 
-/* Problem 1: stairclimbing.
- * This function determines how many different ways there are to climb a staircase of
- * a given length, if with each stride you can choose to advance up by one stair or two.
- * Returns an integer.  Returns 0 if the parameter numStairs is negative.
- */
 
 // wrapper function
 int CountWays(int numStairs) {
