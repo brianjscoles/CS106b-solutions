@@ -58,7 +58,7 @@ int main()
 	Randomize();
 	Welcome();
 	GiveInstructions();
-    NewGameLoop();
+        NewGameLoop();
 	return 0;
 }
 
@@ -123,6 +123,7 @@ void NewGameLoop(){
     cout << "Goodbye!";
 }
 
+
 /* Function: PlayGame
  * ----------------------
  * This function runs through one iteration of a Boggle game.
@@ -130,7 +131,6 @@ void NewGameLoop(){
  * words on the board, and the set of words found by the human player.  These objects are 
  * then passed by reference from here to many other functions.
  */ 
-
 void PlayGame(int size, string letters){
     cout << "Stand by, shaking the cubes..." << endl;
     Grid<char> board = SetupBoard(size, letters);
@@ -147,7 +147,6 @@ void PlayGame(int size, string letters){
  * Returns a string of letters (length 16 or 25 depending on the size parameter) by randomly 
  * arranging and then randomly "rolling" the standard boggle cubes.
  */ 
-
 string GenerateRandomRoll(int size){
    
    string standard_cubes[16]=  
@@ -331,7 +330,6 @@ void DoComputerTurn(Grid<char>board, Map<Vector<pointT> > &all_words, Set<string
  * This function loops up the given set of pointTs, and returns the string that those
  * points represent given the current Boggle board.
  */ 
-
 string WordFromPoints(Vector<pointT> &points, Grid<char> &board){
     string word;
     for(int i = 0; i < points.size(); i++){
@@ -398,50 +396,4 @@ string StringToUpper(string input){
     }
     return input;
 }
-
-
-
-
-/* This junk down here is a way to search the boggle board for a single word. 
-
-void CheckWord(string word, Grid<char> &board, Set<string> &humwords){
-    if(word.length() < 4) cout << "Word is too short!" << endl;
-    else if(humwords.contains(word)) cout << "You already got that word!" << endl;
-    else {    
-        pointT point;
-        Vector<pointT> points;       
-        for(int row = 0; row < board.numRows(); row++){
-            for(int col = 0; col < board.numCols(); col++){
-                if(board.getAt(row,col)==word[0]) {
-                    point.row = row;
-                    point.col = col;
-                    points.add(point);
-                    SearchBoardForWord(points, word, board, humwords);
-                    points.clear();
-                }
-            }
-        }
-    }
-}
-
-void SearchBoardForWord(Vector<pointT> points, string target, Grid<char> &board, Set<string> &humwords){
-    string word = WordFromPoints(points, board);
-    if(word==target){
-        HighlightWord(points, true);
-        Pause(.1);
-        HighlightWord(points, false);
-        humwords.add(word);
-        RecordWordForPlayer(word,Human);
-        cout << "Good find!" << endl;
-    } else if(word == target.substr(0,word.length())) {
-        Vector<pointT> valid_options = FindValidOptions(points, board);
-        for(int i = 0; i < valid_options.size(); i++){
-            points.add(valid_options[i]);
-            SearchBoardForWord(points, target, board, humwords);
-            points.removeAt(points.size()-1);
-        }
-    }
-}
-
-*/ 
 
