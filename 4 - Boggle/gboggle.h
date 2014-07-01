@@ -1,5 +1,5 @@
 /*
- * File: gboggle.h
+ * File: gboggle.h 
  * ---------------
  * The gboggle.h file defines the interface for a set of
  * functions that
