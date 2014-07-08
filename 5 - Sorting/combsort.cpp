@@ -1,10 +1,9 @@
 /*
- * Project: 5B - generic sort
+ * Project: 5B - generic sort algorithm with callback
  * Created by CS106 C++ Assignment Wizard 0.1
  *
- * Name: [TODO: enter name here]
- * Section: [TODO: enter section leader here]
- * [TODO: Describe assignment]
+ * Name: Brian Scoles
+ * Written July 2014 for C++ in MS Visual Studio 2005
  */
 
 #include <iostream>
