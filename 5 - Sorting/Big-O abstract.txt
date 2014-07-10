@@ -1,0 +1,13 @@
+I wrote a Comb sort algorithm, which is an improved version of Bubble sort  On average, it runs in O(Nlog(N)) time.  Its logarithmic efficiency is mostly thanks to the shrink factor, which adjusts the size of the "comb" for each iteration of the sort.  Here is some sample data on the number of iterations the logarithm required to sort a list of size n.
+
+n = 50: iter = 12
+n = 100: iter = 15
+n = 500: iter = 22
+n = 2000: iter = 31
+n = 10000: iter = 37
+
+You can see that the iterations increase logarithmically.  Within each iteration, the algorithm basically touches every element, so when you put the two parts together and simplify, you get O(Nlog(N)).  According to Wikipedia, Comb sort has a best-case time of O(N) and a worst-case time of O(N^2), however, I have yet to identify exactly why this is.  Regarding the best case: Comb sort (as I wrote it) will still iterate through the list log(N) times before gap=1.  It will not perform any swaps, but only after gap=1 can the algorithm conclude that the list is fully sorted.  Regarding the worst-case: I cannot imagine what scenario would cause the algorithm to go quadratic.  A reverse-sorted list, for example, takes about the same amount of time as a randomly sorted list.
+
+In the "outer loop" which repeats log(N) times, Comb sort performs 3 basic initialization operations.  In the "inner loop," which repeats between N and (N - N/1.3) times for each iteration of the outer loop, Comb sort performs 3 comparisons, 3 assignments, and 0 or 1 swaps (a swap entails 1 initialization and 2 assignments).
+
+This algorithm has many strengths: it is efficient, has very little vulnerability to worst-case inputs (which gives it a big leg up over Quicksort), and is fairly readable and easy to reproduce.  It also does its sorting in-place, which makes it more resource-efficient than Merge sort. One weakness is that it is not stable; the "combing" effect may scramble the initial order of identical elements.

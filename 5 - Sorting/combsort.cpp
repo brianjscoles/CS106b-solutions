@@ -1,9 +1,10 @@
 /*
- * Project: 5B - generic sort algorithm with callback
+ * Project: 5B - generic sort
  * Created by CS106 C++ Assignment Wizard 0.1
  *
- * Name: Brian Scoles
- * Written July 2014 for C++ in MS Visual Studio 2005
+ * Name: [TODO: enter name here]
+ * Section: [TODO: enter section leader here]
+ * [TODO: Describe assignment]
  */
 
 #include <iostream>
@@ -14,6 +15,9 @@
 
 /* Function prototypes */ 
 
+void RunIntSort();
+void RunSetIntSort();
+void RunStringSort();
 void PrintVectorInt(Vector<int> arr);
 void PrintVectorSetInt(Vector<Set<int> > arr);
 void PrintVectorString(Vector<string> arr);
@@ -22,7 +26,6 @@ string RandomString(Vector<char> &chars, int size);
 int SetSum(Set<int> set1);
 int SetIntCmp(Set<int> set1, Set<int> set2);
 int StringCmp(string string1, string string2);
-
 
 
 /* Template functions */
@@ -63,7 +66,7 @@ template <typename Type>
                 pos++;
             }
             if(gap > 1){
-                gap--;
+                gap = (gap/shrink_factor<1)?1:gap/shrink_factor;
             }else if(sorted){
                 double runtime = (clock() - start);
                 cout << "finished in " << runtime << " milliseconds." << endl << endl;
@@ -77,25 +80,47 @@ template <typename Type>
 
 /* 
  * Main Program
- * Contains some test code to put our CombSort through its paces.
+ * Calls some test code to put our CombSort through its paces.
  */ 
 
 int main ()
 {
     Randomize();
-    
-    /* Test code for sorting a vector of ints */ 
+    RunIntSort();
+    RunSetIntSort();
+    RunStringSort();
+	return 0;
+}
 
-    Vector<int> testarr = RandomArray(250,0,500);
+
+/* 
+ * Fuction: RunIntSort
+ * Puts the algorithm through its paces by asking it to sort a list of random integers.
+ */ 
+
+void RunIntSort(){
+    Vector<int> randarr = RandomArray(500,0,500);
+
+    //unused code for testing an already-sorted list
+    Vector<int> orderedarr;
+    for(int i = 0; i < 10000; i++){
+        orderedarr.add(i);
+    }
+
     cout << "Testing our CombSort on a vector of random integers..." << endl << endl;
     cout << "Here is the unsorted vector of integers:" << endl << endl;
-    PrintVectorInt(testarr);
-    CombSort(testarr);
+    PrintVectorInt(randarr);
+    CombSort(randarr);
     cout << "Here is the sorted version" << endl << endl;
-    PrintVectorInt(testarr);
-    
+    PrintVectorInt(randarr);
+}
 
-    /* Test code for sorting a vector of sets of ints. */ 
+/* 
+ * Fuction: RunSetIntSort
+ * Puts the algorithm through its paces by asking it to sort a bunch of sets of integers.
+ */ 
+
+void RunSetIntSort(){
 
     // Populating a vector with randomized sets.
     Vector<Set<int> > testsets;
@@ -115,10 +140,14 @@ int main ()
     CombSort(testsets,SetIntCmp);
     cout << "Here is the sorted version." << endl << endl;
     PrintVectorSetInt(testsets);
-   
+}
 
-    /* Test code for sorting strings */
+/* 
+ * Function: RunStringSort
+ * Puts the algorithm through its paces with some random strings.
+ */
 
+void RunStringSort(){
     //building a list of valid characters for random strings. alphabetical + spaces.
     Vector<char> chars;
     for(int i = 65; i < 91; i++){
@@ -131,10 +160,10 @@ int main ()
 
     // populating a vector with some random strings
     Vector<string> teststrings;
-    for(int i = 0; i < 50; i++){
+    for(int i = 0; i < 40; i++){
         teststrings.add(RandomString(chars,RandomInteger(3,10)));
     }
-    
+
     // running the vector through the sort algorithm.
     cout << "Testing our CombSort on a vector of strings..." << endl << endl;
     cout << "Here is the unsorted vector of strings:" << endl << endl;
@@ -142,9 +171,6 @@ int main ()
     CombSort(teststrings,StringCmp);
     cout << "Here is the sorted version." << endl << endl;
     PrintVectorString(teststrings);
-
-
-	return 0;
 }
 
 
@@ -281,3 +307,4 @@ int StringCmp(string string1, string string2){
         return 0;
     }
 }
+
