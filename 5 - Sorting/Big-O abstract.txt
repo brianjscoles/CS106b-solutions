@@ -1,4 +1,4 @@
-I wrote a Comb sort algorithm, which is an improved version of Bubble sort  On average, it runs in O(Nlog(N)) time.  Its
+I wrote a Comb sort algorithm, which is an improved version of Bubble sort.  On average, it runs in O(Nlog(N)) time.  Its
 logarithmic efficiency is mostly thanks to the shrink factor, which adjusts the size of the "comb" for each iteration of the
 sort.  Here is some sample data on the number of iterations the logarithm required to sort a list of size n.
 
