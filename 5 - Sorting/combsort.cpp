@@ -1,10 +1,6 @@
 /*
  * Project: 5B - generic sort
- * Created by CS106 C++ Assignment Wizard 0.1
- *
- * Name: [TODO: enter name here]
- * Section: [TODO: enter section leader here]
- * [TODO: Describe assignment]
+ * Written for C++ in July 2014 by Brian Scoles
  */
 
 #include <iostream>
