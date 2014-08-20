@@ -3,6 +3,13 @@
  * Written August 2014 by Brian Scoles, for C++
  * This program identifies shortest-distance paths and minimal spanning trees for
  * fully-connected graphs that are supplied in properly formatted .txt files.
+ * 
+ * VERSION-SPECIFIC NOTES:
+ * as of 8-19-2014, I am uploading this version because it works and I'm ready to move on!
+ * Performance-wise, this build is quite stable, but not all of the code is pretty.
+ * Notably, the readFile(), findPath(), findMinimalTree(), and main() functions need better decomposition.
+ * Also, better unification is needed for the various calls to updating the graphics window 
+ * by redrawing the background image and/or arcs and/or nodes.
  */
  
 #include "genlib.h"
