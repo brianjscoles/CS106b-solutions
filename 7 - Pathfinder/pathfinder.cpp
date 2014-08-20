@@ -10,6 +10,7 @@
  * Notably, the readFile(), findPath(), findMinimalTree(), and main() functions need better decomposition.
  * Also, better unification is needed for the various calls to updating the graphics window 
  * by redrawing the background image and/or arcs and/or nodes.
+ * Also, the functions are in no particularly logical order.  They could be re-ordered for better browsability.
  */
  
 #include "genlib.h"
@@ -290,8 +291,8 @@ string readFile(string fileName, Map<nodeT*> & nodes, Vector<arcT*> & arcs){
     
 
     //in case this is not the first time that readfile() has been called:
-    //deletes all nodes and arcs currently in the heap before populating
-    //them with fresh data from the file.
+    //deletes all nodes and arcs currently in the heap, and clears out the
+    // "nodes" and "arcs" objects, before bringing in the fresh data.
     Map<nodeT*>::Iterator iter = nodes.iterator();
     while(iter.hasNext()){
        delete nodes[iter.next()];
