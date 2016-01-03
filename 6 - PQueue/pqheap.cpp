@@ -1,11 +1,10 @@
 /*
  * File: pqvector.cpp
  * ------------------
- * This file implements the priority queue class as a vector
- * of integers stored in no particular order.  This makes it easy
- * enqueue new elements, but hard to dequeue the max (have to search for it).
+ * This file implements the priority queue class as a heap
+ * of integers stored in no particular order.  
  *
- * Julie Zelenski, CS106
+ * Kai Yao, CS106
  */
  
 #include "pqueue.h"
@@ -50,8 +49,9 @@ int PQueue::size()
 
 /* Implementation notes: enqueue
  * -----------------------------
- * Since we're keeping the vector in no particular order, we just append this
- * new element to the end.  It's the easiest/fastest thing to do.
+ * I leave the first index empty so count starts from index 1. capacity starts from 0.
+ * If count is equal to capacity - 1. This array need expand.
+ * If not we just insert the new value to array and heapify.
  */
 void PQueue::enqueue(int newValue)
 {
@@ -86,9 +86,10 @@ void PQueue::enqueue(int newValue)
 
 /* Implementation notes: dequeueMax
  * --------------------------------
- * Since we're keeping the vector in no particular order, we have to search to
- * find the largest element.  Once found, we remove it from the vector and
- * return that value.
+ * After dequeueMax, we put the last one to first index and do heapify.
+ * First we consider the scenario that there are not children.
+ * Then there is only left child
+ * THen there are two children.
  */
 int PQueue::dequeueMax()
 {	
@@ -104,28 +105,28 @@ int PQueue::dequeueMax()
 	
 	int curP = 1;
 	while(true) {
-		if(curP * 2 > count) break;// do not have any child
+		if(curP * 2 > count) break;// do not have any children
 		if(curP * 2 + 1 > count) {
 			//only have left child
-			if(entries[curP] > entries[curP * 2 + 1]) 
+			if(entries[curP] > entries[curP * 2]) 
 				break; // right pos
 			else {
-				swap(entries[curP], entries[curP * 2 + 1]);
-				curP = curP * 2 + 1;
+				swap(entries[curP], entries[curP * 2]); //swap with left child
+				curP = curP * 2;
 			}
 		} else {
 			//have two child
-			if(entries[curP] > entries[curP * 2] && entries[curP] <= entries[curP * 2 + 1]) {
+			if(entries[curP] > entries[curP * 2] && entries[curP] <= entries[curP * 2 + 1]) {//swap with right child
 				swap(entries[curP], entries[curP * 2 + 1]); 
 				curP = curP * 2 + 1;
-			} else if(entries[curP] <= entries[curP * 2] && entries[curP] > entries[curP * 2 + 1]) {
+			} else if(entries[curP] <= entries[curP * 2] && entries[curP] > entries[curP * 2 + 1]) {//swap with left child
 				swap(entries[curP], entries[curP * 2]); 
 				curP = curP * 2;
 			} else if(entries[curP] <= entries[curP * 2] && entries[curP] <= entries[curP * 2 + 1] && entries[curP * 2 + 1] <= entries[curP * 2]) {
-				swap(entries[curP], entries[curP * 2]); 
+				swap(entries[curP], entries[curP * 2]); //swap with left child
 				curP = curP * 2;
 			} else if(entries[curP] <= entries[curP * 2] && entries[curP] <= entries[curP * 2 + 1] && entries[curP * 2 + 1] > entries[curP * 2]) {
-				swap(entries[curP], entries[curP * 2 + 1]); 
+				swap(entries[curP], entries[curP * 2 + 1]); //swap with right child
 				curP = curP * 2 + 1;
 			} else {
 				break;// right pos
